@@ -2,13 +2,22 @@
 
 **Built with Python and Django.**
 
-## Install and run
+## Install and run development mode no docker
 
 `poetry install`
 
+`set -o allexport; source .env.dev; set +o allexport`
+
 `poetry run python manage.py migrate`
 
-`poetry run gunicorn manager.wsgi --log-file -`
+`poetry run python manage.py livereload > /dev/null |`
+
+`poetry run hypercorn manager.asgi:app --reload --debug --log-file -`
+
+## Internationalization and localization¶
+
+`django-admin makemessages -l ru`
+`django-admin compilemessages`
 
 ## Features
 

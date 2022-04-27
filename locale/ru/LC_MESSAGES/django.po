@@ -1,0 +1,217 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-04-27 18:35+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
+"(n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: core/templates/core/base.html:58 core/templates/core/base.html:136
+#: core/templates/core/base.html:233 core/templates/core/index.html:6
+#: projects/templates/projects/new_project.html:6
+#: projects/templates/projects/new_task.html:6
+#: projects/templates/projects/projects.html:7
+#: register/templates/register/friends.html:6
+#: register/templates/register/invites.html:6
+#: register/templates/register/login.html:6
+#: register/templates/register/new_company.html:6
+#: register/templates/register/profile.html:6
+#: register/templates/register/reg_form.html:6
+#: register/templates/register/user.html:6
+#: register/templates/register/users.html:6
+msgid "Home"
+msgstr "Главная страница"
+
+#: core/templates/core/base.html:64 core/templates/core/base.html:108
+#: core/templates/core/base.html:111 core/templates/core/base.html:242
+#: core/templates/core/base.html:335
+msgid "Settings"
+msgstr "Настройки"
+
+#: core/templates/core/base.html:82
+msgid "Hello"
+msgstr "Привет"
+
+#: core/templates/core/base.html:113 core/templates/core/base.html:180
+#: core/templates/core/dashboard.html:63
+#: projects/templates/projects/new_project.html:7
+#: projects/templates/projects/new_project.html:31
+#: projects/templates/projects/new_task.html:7
+#: projects/templates/projects/projects.html:8
+#: projects/templates/projects/projects.html:79
+#: register/templates/register/profile.html:55
+msgid "Projects"
+msgstr "Проекты"
+
+#: core/templates/core/base.html:169
+#: projects/templates/projects/new_project.html:117
+#: register/templates/register/invites.html:25
+#: register/templates/register/new_company.html:7
+#: register/templates/register/profile.html:54
+#: register/templates/register/user.html:42
+msgid "Company"
+msgstr "Организация"
+
+#: core/templates/core/base.html:174
+#: register/templates/register/new_company.html:8
+msgid "New Company"
+msgstr "Новая компания"
+
+#: core/templates/core/base.html:185
+msgid "New Project"
+msgstr "Новый проект"
+
+#: core/templates/core/base.html:190
+msgid "New Task"
+msgstr "Новая задача"
+
+#: core/templates/core/base.html:196 register/templates/register/friends.html:7
+#: register/templates/register/invites.html:7
+#: register/templates/register/login.html:7
+#: register/templates/register/profile.html:7
+#: register/templates/register/reg_form.html:7
+#: register/templates/register/reg_form.html:27
+#: register/templates/register/user.html:7
+#: register/templates/register/users.html:7
+msgid "Users"
+msgstr "Пользователи"
+
+#: core/templates/core/index.html:16
+msgid "Main info"
+msgstr "Основная информация"
+
+#: core/templates/core/index.html:25
+msgid "Hello, world!"
+msgstr "Привет, мир!"
+
+#: core/templates/core/index.html:26
+msgid "Welcome to the Project Manager System."
+msgstr "Добро пожаловать в систему менеджера проектов."
+
+#: core/templates/core/index.html:28
+msgid "Register your company and start managing your projects"
+msgstr "Зарегистрируйте свою компанию и начните управлять вашими проектами."
+
+#: core/templates/core/index.html:29
+msgid "That`s it, simple, easy, fast."
+msgstr "Вот и все, просто, легко, быстро."
+
+#: core/templates/core/index.html:31
+msgid "Set up your company"
+msgstr "Настройка вашей компании"
+
+#: core/templates/core/index.html:34
+msgid "Click here if you are already registered"
+msgstr "Нажмите здесь, если вы уже зарегистрированы."
+
+#: manager/settings.py:142
+msgid "Russian"
+msgstr "Русский"
+
+#: manager/settings.py:143
+msgid "English"
+msgstr "Английский"
+
+#: projects/templates/projects/new_project.html:8
+msgid "New Projects"
+msgstr "Новые проекты"
+
+#: projects/templates/projects/new_project.html:32
+msgid "Create your projects here"
+msgstr "Создайте ваши проекты"
+
+#: projects/templates/projects/new_project.html:169
+#: register/templates/register/new_company.html:111
+msgid "Submit"
+msgstr "Отправить"
+
+#: projects/templates/projects/new_project.html:171
+msgid "Reset"
+msgstr "Сбросить"
+
+#: projects/templates/projects/new_task.html:36
+#, fuzzy
+#| msgid "Projects"
+msgid "Project"
+msgstr "Проекты"
+
+#: projects/templates/projects/new_task.html:68
+msgid "Task name"
+msgstr ""
+
+#: register/forms.py:63
+msgid "social_name"
+msgstr ""
+
+#: register/forms.py:64
+msgid "Name"
+msgstr "Имя"
+
+#: register/forms.py:65
+msgid "email"
+msgstr ""
+
+#: register/forms.py:66
+msgid "City"
+msgstr "Город"
+
+#: register/forms.py:67
+msgid "found_date"
+msgstr ""
+
+#: register/templates/register/invites.html:72
+msgid "You have no invites"
+msgstr "У вас нет приглашений"
+
+#: register/templates/register/login.html:8
+#: register/templates/register/login.html:22
+#: register/templates/register/login.html:49
+msgid "Login"
+msgstr "Вход"
+
+#: register/templates/register/login.html:23
+msgid "Sign In to your account"
+msgstr "Войти в свой аккаунт"
+
+#: register/templates/register/login.html:54
+msgid "Forgot password?"
+msgstr "Забыли пароль?"
+
+#: register/templates/register/login.html:59
+#: register/templates/register/new_company.html:115
+msgid "Wrong username or password"
+msgstr "Неправильное имя пользователя или пароль."
+
+#: register/templates/register/login.html:69
+msgid "Sign up"
+msgstr "Зарегистрироваться"
+
+#: register/templates/register/login.html:70
+msgid "Register now, it's free."
+msgstr "Зарегистрируйтесь сейчас, это бесплатно."
+
+#: register/templates/register/login.html:72
+msgid "Register Now!"
+msgstr "Зарегистрируйтесь сейчас!"
+
+#: register/templates/register/new_company.html:27
+msgid "Congratulations, your company was created!"
+msgstr "Поздравляем, ваша компания создана!"
+
+#: register/templates/register/new_company.html:33
+msgid "Set up your company registration here"
+msgstr "Настройка вашей компании"

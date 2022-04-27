@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
+from django.utils.translation import gettext_lazy as _
+from pathlib import Path
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -22,10 +24,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '!%m041&45i+ks6*fmf2$lf69+uarcv5l-25540r^rhe=fm^(yi'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get("DEBUG", False)
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -38,9 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # my apps
-    'core',
-    'register',
-    'projects',
+    'core.apps.CoreConfig',
+    'register.apps.RegisterConfig',
+    'projects.apps.ProjectsConfig',
 
     # third apps
     'multiselectfield',
@@ -50,12 +51,22 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+if DEBUG:
+    INSTALLED_APPS.extend([
+        # third apps only DEBUG
+        'livereload',
+    ])
+    MIDDLEWARE.extend([
+        'livereload.middleware.LiveReloadScript',
+    ])
 
 ROOT_URLCONF = 'manager.urls'
 
@@ -68,6 +79,7 @@ TEMPLATES = [
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
+                'django.template.context_processors.i18n',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'core.views.context',
@@ -77,7 +89,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'manager.wsgi.application'
-
+ASGI_APPLICATION = 'manager.asgi.app'
 
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
@@ -89,32 +101,36 @@ DATABASES = {
     }
 }
 
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        'NAME':
+        'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'NAME':
+        'django.contrib.auth.password_validation.MinimumLengthValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        'NAME':
+        'django.contrib.auth.password_validation.CommonPasswordValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        'NAME':
+        'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = os.environ.get("LANGUAGE_CODE", "en-us")
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = os.environ.get("TIME_ZONE", "UTC")
 
 USE_I18N = True
 
@@ -122,16 +138,28 @@ USE_L10N = True
 
 USE_TZ = True
 
+LANGUAGES = [
+    ('ru', _('Russian')),
+    ('en', _('English')),
+]
+
+LOCALE_PATHS = [os.path.join(BASE_DIR, 'locale')]
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = Path(BASE_DIR, 'static')
 
-MEDIA_URL = '/media/' # Included upload images
-MEDIA_ROOT =  os.path.join(BASE_DIR, 'core/media') # Included upload images
-print(MEDIA_ROOT)
+MEDIA_URL = '/media/'  # Included upload images
+MEDIA_ROOT = Path(BASE_DIR, 'media')  # Included upload images
+
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'core', 'static'), )
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+)
 
 # Heroku configs
 if os.getcwd() == '/app':
@@ -149,9 +177,7 @@ if os.getcwd() == '/app':
     # CONFIG FOR STATICFILES
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
     STATIC_ROOT = 'staticfiles'
-    STATICFILES_DIRS = (
-        os.path.join(BASE_DIR, 'static'),
-    )
+    STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'), )
 
     AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
     AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
@@ -167,9 +193,3 @@ if os.getcwd() == '/app':
     STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
 
     DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-
-
-
-
-
-

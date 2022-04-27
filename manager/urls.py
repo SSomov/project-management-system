@@ -17,9 +17,18 @@ from django.contrib import admin
 from django.urls import path
 from django.urls import include
 
+from django.conf import settings, urls
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+
 urlpatterns = [
+    # path('i18n/', include('django.conf.urls.i18n')),
     path('admin/', admin.site.urls),
     path('register/', include('register.urls', namespace='register')),
     path('projects/', include('projects.urls', namespace='projects')),
     path('', include('core.urls', namespace='core')),
 ]
+
+if settings.DEBUG:
+    urlpatterns = staticfiles_urlpatterns() + urlpatterns
+    urlpatterns += urls.static.static(settings.MEDIA_URL,
+                                      document_root=settings.MEDIA_ROOT)

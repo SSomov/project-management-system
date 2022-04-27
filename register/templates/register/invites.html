@@ -1,9 +1,10 @@
 {% extends 'core/base.html' %}
 {% load static %}
+{% load i18n %}
 
 {% block breadcrumb %}
-        <li class="breadcrumb-item">Home</li>
-        <li class="breadcrumb-item">Users</li>
+        <li class="breadcrumb-item">{% translate 'Home' %}</li>
+        <li class="breadcrumb-item">{% translate 'Users' %}</li>
         <li class="breadcrumb-item active">Invites</li>
 {% endblock breadcrumb%}
 
@@ -21,7 +22,7 @@
                     <th class="text-center"><i class="fa fa-user"></i></th>
                     <th>User</th>
                     <th>Add / Delete</th>
-                    <th>Company</th>
+                    <th>{% translate 'Company' %}</th>
                     <th class="text-center">Friends*</th>
                     <th>Activity</th>
                 </tr>
@@ -68,7 +69,7 @@
                 </table>
                 {% else %}
                 {% if user.is_authenticated %}
-                    <h3 class="m-5">You have no invites :(</h3>
+                    <h3 class="m-5">{% translate 'You have no invites' %} :(</h3>
                 {% else %}
                     <a href="{% url 'core:login' %}" class="nav-link display-4">Log in to see your invites</a>
                 {% endif %}

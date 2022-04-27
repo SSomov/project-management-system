@@ -1,9 +1,10 @@
 {% extends 'core/base.html' %}
 {% load static %}
+{% load i18n %}
 
 {% block breadcrumb %}
-        <li class="breadcrumb-item">Home</li>
-        <li class="breadcrumb-item">Users</li>
+        <li class="breadcrumb-item">{% translate 'Home' %}</li>
+        <li class="breadcrumb-item">{% translate 'Users' %}</li>
         <li class="breadcrumb-item active">Friends</li>
 {% endblock breadcrumb%}
 
@@ -48,10 +49,10 @@
 
             <div class="row mt-5">
                 <div class="col-12">
-                    <div class="social-box" style="">
+                    <div class="social-box">
                         <ul class="mt-3">
-                            <li><span>Company: <a href="">{{ logged_user.company }}</a></span></li>
-                            <li><span>Projects:
+                            <li><span>{% translate 'Company' %}: <a href="">{{ logged_user.company }}</a></span></li>
+                            <li><span>{% translate 'Projects' %}:
                                     {% for project in logged_user.user.project_set.all %}
                                         <a href="">{{ project.name }},</a>
                                     {% endfor %}

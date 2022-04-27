@@ -1,0 +1,52 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.2.0
+    hooks:
+    -   id: check-yaml
+    -   id: end-of-file-fixer
+    -   id: trailing-whitespace
+
+  - repo: https://github.com/pre-commit/mirrors-yapf
+    rev: v0.32.0
+    hooks:
+    # yapf = yet another python formatter
+    - id: yapf
+      name: yapf
+      types: [python]
+      exclude: >
+        (?x)^(
+            docs/.*|
+        )$
+      args: ['-i']
+      additional_dependencies: [toml]
+
+  - repo: https://github.com/wemake-services/dotenv-linter
+    rev: 0.2.0  # Use the ref you want to point at
+    hooks:
+      - id: dotenv-linter
+
+# - repo: local
+
+#     hooks:
+  # -   id: yapf
+  #     name: yapf
+  #     entry: yapf
+  #     language: python
+  #     'types': [python]
+  #     args: ["-i"]
+  #     require_serial: false
+  #     additional_dependencies: []
+  #     minimum_pre_commit_version: '0'
+    # - id: black
+    #   name: black
+    #   entry: black
+    #   language: system
+    #   types: [python]
+    #   args: [--line-length=200, --target-version=py37]
+
+    # - id: autoflake
+    #   name: autoflake
+    #   entry: autoflake
+    #   language: system
+    #   types: [python]
+    #   args: [--in-place, --remove-all-unused-imports, --remove-duplicate-keys]

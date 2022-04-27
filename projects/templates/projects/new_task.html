@@ -1,9 +1,10 @@
 {% extends 'core/base.html' %}
 {% load static %}
+{% load i18n %}
 
 {% block breadcrumb %}
-        <li class="breadcrumb-item">Home</li>
-        <li class="breadcrumb-item">Projects</li>
+        <li class="breadcrumb-item">{% translate 'Home' %}</li>
+        <li class="breadcrumb-item">{% translate 'Projects' %}</li>
         <li class="breadcrumb-item active">New Task</li>
 {% endblock breadcrumb%}
 
@@ -32,7 +33,7 @@
                                 <form action="" method="post">
                                     {% csrf_token %}
                                     <div class="form-group">
-                                        <label class="col-form-label">Project</label>
+                                        <label class="col-form-label">{% translate 'Project' %}</label>
                                         <div class="input-group">
                                             <div class="input-group-append">
                                                 <span class="input-group-text"><i class="fa fa-puzzle-piece"></i></span>
@@ -64,7 +65,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-form-label">Task name</label>
+                                        <label class="col-form-label">{% translate 'Task name' %}</label>
                                         <div class="input-group">
                                             <div class="input-group-append">
                                                 <span class="input-group-text"><i class="fa fa-align-center"></i></span>

@@ -1,9 +1,10 @@
 {% extends 'core/base.html' %}
 {% load static %}
+{% load i18n %}
 
 {% block breadcrumb %}
-        <li class="breadcrumb-item">Home</li>
-        <li class="breadcrumb-item">Users</li>
+        <li class="breadcrumb-item">{% translate 'Home' %}</li>
+        <li class="breadcrumb-item">{% translate 'Users' %}</li>
         <li class="breadcrumb-item active">Friends</li>
 {% endblock breadcrumb%}
 
@@ -38,7 +39,7 @@
                                     <ul class="mt-4 mx-5">
                                         <h5>Personal info:</h5>
                                         <li><span>Name:</span> {{ user_view.user.get_full_name }}</li>
-                                        <li><span>Company:</span> {{ user_view.company }}</li>
+                                        <li><span>{% translate 'Company' %}:</span> {{ user_view.company }}</li>
                                         <li><span>E-mail:</span> {{ user_view.user.email}}</li>
                                         <li><span>Last login:</span> {{ user_view.user.last_login }}</li>
                                         <li><span>Date joined:</span> {{ user_view.user.date_joined }}</li>

@@ -3,6 +3,8 @@ from register.models import Company as Comp
 from register.models import UserProfile
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
+from django.utils.translation import gettext_lazy as _
+
 
 class RegistrationForm(UserCreationForm):
     email = forms.EmailField(label='E-mail', required=True)
@@ -36,7 +38,8 @@ class RegistrationForm(UserCreationForm):
 
         if commit:
             user.save()
-            user_profile = UserProfile.objects.create(user=user, company=Comp.objects.get(name=company))
+            user_profile = UserProfile.objects.create(
+                user=user, company=Comp.objects.get(name=company))
             user_profile.save()
 
         return user
@@ -54,20 +57,26 @@ class RegistrationForm(UserCreationForm):
         self.fields['password1'].widget.attrs['class'] = 'form-control'
         self.fields['password1'].widget.attrs['placeholder'] = 'Password'
         self.fields['password2'].widget.attrs['class'] = 'form-control'
-        self.fields['password2'].widget.attrs['placeholder'] = 'Retype Password'
+        self.fields['password2'].widget.attrs[
+            'placeholder'] = 'Retype Password'
         self.fields['company'].widget.attrs['class'] = 'form-control'
 
 
 class CompanyRegistrationForm(forms.Form):
-    social_name = forms.CharField(max_length=80)
-    name = forms.CharField(max_length=80)
-    email = forms.EmailField()
-    city = forms.CharField(max_length=50)
-    found_date = forms.DateField()
+    social_name = forms.CharField(max_length=80, label=_('social_name'))
+    name = forms.CharField(
+        max_length=80,
+        label=_('Name'),
+        widget=forms.TextInput(attrs={'placeholder': _('Name')}))
+    email = forms.EmailField(label=_('email'))
+    city = forms.CharField(
+        max_length=50,
+        label=_('City'),
+        widget=forms.TextInput(attrs={'placeholder': _('City')}))
+    found_date = forms.DateField(label=_('found_date'))
 
     class Meta:
         model = Comp
-
 
     def save(self, commit=True):
         company = Comp()
@@ -80,23 +89,21 @@ class CompanyRegistrationForm(forms.Form):
         if commit:
             company.save()
 
-
     def __init__(self, *args, **kwargs):
         super(CompanyRegistrationForm, self).__init__(*args, **kwargs)
         self.fields['social_name'].widget.attrs['class'] = 'form-control'
         self.fields['social_name'].widget.attrs['placeholder'] = 'Social Name'
         self.fields['name'].widget.attrs['class'] = 'form-control'
-        self.fields['name'].widget.attrs['placeholder'] = 'Name'
         self.fields['email'].widget.attrs['class'] = 'form-control'
         self.fields['email'].widget.attrs['placeholder'] = 'Email'
         self.fields['city'].widget.attrs['class'] = 'form-control'
-        self.fields['city'].widget.attrs['placeholder'] = 'City'
         self.fields['found_date'].widget.attrs['class'] = 'form-control'
         self.fields['found_date'].widget.attrs['placeholder'] = 'Found date'
 
 
 class ProfilePictureForm(forms.Form):
     img = forms.ImageField()
+
     class Meta:
         model = UserProfile
         fields = ['img']
