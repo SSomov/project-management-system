@@ -73,7 +73,6 @@ class CompanyRegistrationForm(forms.Form):
         max_length=50,
         label=_('City'),
         widget=forms.TextInput(attrs={'placeholder': _('City')}))
-    found_date = forms.DateField(label=_('found_date'))
 
     class Meta:
         model = Comp
@@ -84,7 +83,6 @@ class CompanyRegistrationForm(forms.Form):
         company.name = self.cleaned_data['name']
         company.email = self.cleaned_data['email']
         company.city = self.cleaned_data['city']
-        company.found_date = self.cleaned_data['found_date']
 
         if commit:
             company.save()
@@ -97,8 +95,6 @@ class CompanyRegistrationForm(forms.Form):
         self.fields['email'].widget.attrs['class'] = 'form-control'
         self.fields['email'].widget.attrs['placeholder'] = 'Email'
         self.fields['city'].widget.attrs['class'] = 'form-control'
-        self.fields['found_date'].widget.attrs['class'] = 'form-control'
-        self.fields['found_date'].widget.attrs['placeholder'] = 'Found date'
 
 
 class ProfilePictureForm(forms.Form):

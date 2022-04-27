@@ -10,9 +10,7 @@
 
 `poetry run python manage.py migrate`
 
-`poetry run python manage.py livereload > /dev/null |`
-
-`poetry run hypercorn manager.asgi:app --reload --debug --log-file -`
+`poetry run python manage.py livereload > /dev/null | poetry run hypercorn manager.asgi:app --reload --debug --log-file -`
 
 ## Internationalization and localization¶
 

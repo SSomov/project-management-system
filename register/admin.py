@@ -5,7 +5,7 @@ from .models import Invite
 
 
 class CompanyAdmin(admin.ModelAdmin):
-    list_display = ['name', 'email', 'city', 'found_date']
+    list_display = ['name', 'email', 'city', 'created']
     search_fields = ['name', 'social_name', 'city']
 
 

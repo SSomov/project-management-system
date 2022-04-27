@@ -169,10 +169,6 @@ msgstr ""
 msgid "City"
 msgstr "Город"
 
-#: register/forms.py:67
-msgid "found_date"
-msgstr ""
-
 #: register/templates/register/invites.html:72
 msgid "You have no invites"
 msgstr "У вас нет приглашений"

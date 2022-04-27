@@ -9,7 +9,7 @@ class Company(models.Model):
     name = models.CharField(max_length=80)
     email = models.EmailField()
     city = models.CharField(max_length=50)
-    found_date = models.DateField()
+    created = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         verbose_name_plural = 'Companies'
