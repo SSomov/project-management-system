@@ -18,7 +18,11 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Company',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id',
+                 models.AutoField(auto_created=True,
+                                  primary_key=True,
+                                  serialize=False,
+                                  verbose_name='ID')),
                 ('social_name', models.CharField(max_length=80)),
                 ('name', models.CharField(max_length=80)),
                 ('email', models.EmailField(max_length=254)),
@@ -27,16 +31,24 @@ class Migration(migrations.Migration):
             ],
             options={
                 'verbose_name_plural': 'Companies',
-                'ordering': ('name',),
+                'ordering': ('name', ),
             },
         ),
         migrations.CreateModel(
             name='UserProfile',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('company', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='register.Company')),
+                ('id',
+                 models.AutoField(auto_created=True,
+                                  primary_key=True,
+                                  serialize=False,
+                                  verbose_name='ID')),
+                ('company',
+                 models.ForeignKey(on_delete=django.db.models.deletion.CASCADE,
+                                   to='register.Company')),
                 ('project', models.ManyToManyField(to='projects.Project')),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                ('user',
+                 models.ForeignKey(on_delete=django.db.models.deletion.CASCADE,
+                                   to=settings.AUTH_USER_MODEL)),
             ],
         ),
     ]

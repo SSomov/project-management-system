@@ -15,11 +15,15 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='userprofile',
             name='company',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.DO_NOTHING, to='register.Company'),
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.DO_NOTHING,
+                to='register.Company'),
         ),
         migrations.AlterField(
             model_name='userprofile',
             name='user',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.DO_NOTHING, to=settings.AUTH_USER_MODEL),
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.DO_NOTHING,
+                to=settings.AUTH_USER_MODEL),
         ),
     ]

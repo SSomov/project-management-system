@@ -14,19 +14,29 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Friends',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id',
+                 models.AutoField(auto_created=True,
+                                  primary_key=True,
+                                  serialize=False,
+                                  verbose_name='ID')),
             ],
         ),
         migrations.CreateModel(
             name='Invite',
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id',
+                 models.AutoField(auto_created=True,
+                                  primary_key=True,
+                                  serialize=False,
+                                  verbose_name='ID')),
             ],
         ),
         migrations.AddField(
             model_name='userprofile',
             name='friends',
-            field=models.ManyToManyField(blank=True, related_name='_userprofile_friends_+', to='register.UserProfile'),
+            field=models.ManyToManyField(blank=True,
+                                         related_name='_userprofile_friends_+',
+                                         to='register.UserProfile'),
         ),
         migrations.AlterField(
             model_name='userprofile',
@@ -36,11 +46,17 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='invite',
             name='invited',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.DO_NOTHING, related_name='received_invites', to='register.UserProfile'),
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.DO_NOTHING,
+                related_name='received_invites',
+                to='register.UserProfile'),
         ),
         migrations.AddField(
             model_name='invite',
             name='inviter',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.DO_NOTHING, related_name='made_invites', to='register.UserProfile'),
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.DO_NOTHING,
+                related_name='made_invites',
+                to='register.UserProfile'),
         ),
     ]

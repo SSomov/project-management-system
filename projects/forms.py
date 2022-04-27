@@ -29,7 +29,6 @@ class TaskRegistrationForm(forms.ModelForm):
         model = Task
         fields = '__all__'
 
-
     def save(self, commit=True):
         task = super(TaskRegistrationForm, self).save(commit=False)
         task.project = self.cleaned_data['project']
@@ -45,7 +44,6 @@ class TaskRegistrationForm(forms.ModelForm):
             task.save()
 
         return task
-
 
     def __init__(self, *args, **kwargs):
         super(TaskRegistrationForm, self).__init__(*args, **kwargs)
@@ -76,7 +74,6 @@ class ProjectRegistrationForm(forms.ModelForm):
         model = Project
         fields = '__all__'
 
-
     def save(self, commit=True):
         Project = super(ProjectRegistrationForm, self).save(commit=False)
         Project.name = self.cleaned_data['name']
@@ -97,7 +94,6 @@ class ProjectRegistrationForm(forms.ModelForm):
 
         return Project
 
-
     def __init__(self, *args, **kwargs):
         super(ProjectRegistrationForm, self).__init__(*args, **kwargs)
         self.fields['name'].widget.attrs['class'] = 'form-control'
@@ -107,11 +103,13 @@ class ProjectRegistrationForm(forms.ModelForm):
         self.fields['status'].widget.attrs['class'] = 'form-control'
         self.fields['status'].widget.attrs['placeholder'] = 'Status'
         self.fields['dead_line'].widget.attrs['class'] = 'form-control'
-        self.fields['dead_line'].widget.attrs['placeholder'] = 'Dead Line, type a date'
+        self.fields['dead_line'].widget.attrs[
+            'placeholder'] = 'Dead Line, type a date'
         self.fields['company'].widget.attrs['class'] = 'form-control'
         self.fields['company'].widget.attrs['placeholder'] = 'Company'
         self.fields['complete_per'].widget.attrs['class'] = 'form-control'
         self.fields['complete_per'].widget.attrs['placeholder'] = 'Complete %'
         self.fields['description'].widget.attrs['class'] = 'form-control'
-        self.fields['description'].widget.attrs['placeholder'] = 'Type here the project description...'
+        self.fields['description'].widget.attrs[
+            'placeholder'] = 'Type here the project description...'
         self.fields['assign'].widget.attrs['class'] = 'form-control'

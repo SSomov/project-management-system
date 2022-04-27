@@ -15,21 +15,31 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='invite',
             name='invited',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='received_invites', to='register.UserProfile'),
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name='received_invites',
+                to='register.UserProfile'),
         ),
         migrations.AlterField(
             model_name='invite',
             name='inviter',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='made_invites', to='register.UserProfile'),
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name='made_invites',
+                to='register.UserProfile'),
         ),
         migrations.AlterField(
             model_name='userprofile',
             name='company',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='register.Company'),
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                to='register.Company'),
         ),
         migrations.AlterField(
             model_name='userprofile',
             name='user',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL),
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                to=settings.AUTH_USER_MODEL),
         ),
     ]

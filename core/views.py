@@ -12,9 +12,11 @@ from register.models import Project
 from register.models import UserProfile
 from projects.models import Task
 
+
 # Create your views here.
 def index(request):
     return render(request, 'core/index.html')
+
 
 def dashboard(request):
     users = User.objects.all()
@@ -23,28 +25,29 @@ def dashboard(request):
     projects = Project.objects.all()
     tasks = Task.objects.all()
     context = {
-        'users' : users,
-        'active_users' : active_users,
-        'companies' : companies,
-        'projects' : projects,
-        'tasks' : tasks,
+        'users': users,
+        'active_users': active_users,
+        'companies': companies,
+        'projects': projects,
+        'tasks': tasks,
     }
     return render(request, 'core/dashboard.html', context)
-
 
 
 def login_view(request):
     if request.method == 'POST':
         form = AuthenticationForm(data=request.POST)
         if form.is_valid():
-            authenticated_user = authenticate(username=request.POST['username'], password=request.POST['password'])
+            authenticated_user = authenticate(
+                username=request.POST['username'],
+                password=request.POST['password'])
             login(request, authenticated_user)
             return redirect('core:index')
         else:
-            return render(request, 'register/login.html', {'login_form':form})
+            return render(request, 'register/login.html', {'login_form': form})
     else:
         form = AuthenticationForm()
-    return render(request, 'register/login.html', {'login_form':form})
+    return render(request, 'register/login.html', {'login_form': form})
 
 
 def logout_view(request):
@@ -52,7 +55,7 @@ def logout_view(request):
     return HttpResponseRedirect(reverse('core:index'))
 
 
-def context(request): # send context to base.html
+def context(request):  # send context to base.html
     # if not request.session.session_key:
     #     request.session.create()
     users = User.objects.all()
@@ -60,7 +63,8 @@ def context(request): # send context to base.html
     if request.user.is_authenticated:
         try:
             users_prof = UserProfile.objects.exclude(
-                id=request.user.userprofile_set.values_list()[0][0])  # exclude himself from invite list
+                id=request.user.userprofile_set.values_list()[0]
+                [0])  # exclude himself from invite list
             user_id = request.user.userprofile_set.values_list()[0][0]
             logged_user = UserProfile.objects.get(id=user_id)
             friends = logged_user.friends.all()
@@ -68,14 +72,14 @@ def context(request): # send context to base.html
                 'users': users,
                 'users_prof': users_prof,
                 'logged_user': logged_user,
-                'friends' : friends,
+                'friends': friends,
             }
             return context
         except:
             users_prof = UserProfile.objects.all()
             context = {
-                'users':users,
-                'users_prof':users_prof,
+                'users': users,
+                'users_prof': users_prof,
             }
             return context
     else:

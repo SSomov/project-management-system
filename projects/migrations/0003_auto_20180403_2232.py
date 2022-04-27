@@ -14,11 +14,15 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='project',
             name='company',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='register.Company'),
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                to='register.Company'),
         ),
         migrations.AlterField(
             model_name='task',
             name='project',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='projects.Project'),
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                to='projects.Project'),
         ),
     ]
